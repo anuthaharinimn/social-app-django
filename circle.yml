@@ -26,4 +26,8 @@ deployment:
   development:
     branch: master
     
+machine:
+  services:
+    - docker
+    
     
