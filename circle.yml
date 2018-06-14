@@ -12,13 +12,13 @@ general:
 
 dependencies:
   pre:
-    - sudo apt-get update
+    - sudo apt-get update -y
     - sudo apt-get install -y libgdal-dev
     - sudo apt-get install -y postgis
     - sudo apt-get install -y postgresql-client
     - sudo apt-get install -y python-virtualenv
-    - sudo apt-get install python3-venv
-    - python -m virtualenv venv
+    - sudo apt-get install -y python3.6-venv
+    - python3 -m virtualenv venv
     - source venv/bin/activate 
   
   cache_directories:
