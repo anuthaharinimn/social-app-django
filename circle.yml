@@ -22,9 +22,9 @@ dependencies:
   
   cache_directories:
     - "venv"   # relative to the build directory
-deployment:
-  development:
-    branch: master
+#deployment:
+ # development:
+  #  branch: master
     
 machine:
   services:
