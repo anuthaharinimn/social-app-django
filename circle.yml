@@ -1,0 +1,28 @@
+machine:
+  timezone:
+    Asia/Kolkata
+  python:
+    version:
+      3.6.1
+
+general:
+  artifacts:
+    - /tmp/artifacts
+
+
+dependencies:
+  pre:
+    - sudo apt-get update
+    - sudo apt-get install -y libgdal-dev
+    - sudo apt-get install -y postgis
+    - sudo apt-get install -y postgresql-client
+    - sudo apt-get install -y python-virtualenv
+    - python -m venv venv
+    - source venv/bin/activate && pip install -r requirements/test.txt
+  
+  cache_directories:
+    - "venv"   # relative to the build directory
+deployment:
+  development:
+    branch: master
+    
