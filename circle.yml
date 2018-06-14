@@ -18,11 +18,12 @@ dependencies:
     - sudo apt-get install -y postgresql-client
     - sudo apt-get install -y python-virtualenv
     - python -m venv venv
-    - source venv/bin/activate && pip install -r requirements/test.txt
+    - source venv/bin/activate 
   
   cache_directories:
     - "venv"   # relative to the build directory
 deployment:
   development:
     branch: master
+    
     
