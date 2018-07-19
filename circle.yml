@@ -26,15 +26,15 @@ dependencies:
     - sudo apt-get install -y postgresql-client
     - sudo apt-get install -y python-virtualenv
     - python -m venv venv
-  ##  - source venv/bin/activate && pip install -r requirements/test.txt
+    - source venv/bin/activate && pip install -r requirements/test.txt
   
   cache_directories:
     - "venv"   # relative to the build directory
 
 
- database:
-  pre:
-   - mv /settings/ci_settings.py.sample ilp/settings/ci_settings.py
+# database:
+ # pre:
+  # - mv tests/settings/ci_settings.py.sample tests/settings/ci_settings.py
 
 
 test:
