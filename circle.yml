@@ -13,7 +13,7 @@ machine:
 general:
   branches:
     only:
-      - master
+      - test
   artifacts:
     - /tmp/artifacts
 
