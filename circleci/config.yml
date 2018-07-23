@@ -1,0 +1,48 @@
+version: 2
+jobs:
+  build:
+    working_directory: ~/social-app-django
+    docker:
+      - image: circleci/python:3.6.4
+        environment:
+          PIPENV_VENV_IN_PROJECT: true
+          DATABASE_URL: postgresql://ubuntu:@127.0.0.1:5432/test_ilp
+      - image: circleci/postgres:9.6.2
+        environment:
+          POSTGRES_USER: ubuntu
+          POSTGRES_DB: test_ilp
+    steps:
+      - checkout
+      - restore_cache:
+          key: deps9-{{ .Branch }}-{{ checksum "Pipfile.lock" }}        
+      - run:
+          command: |
+            sudo apt-get update
+            sudo apt-get install -y libgdal-dev
+            sudo apt-get install -y postgis
+            sudo apt-get install -y postgresql-client
+            sudo apt-get install -y python-virtualenv
+            python -m venv venv
+            source venv/bin/activate && pip install -r requirements.txt
+      - save_cache:
+          key: deps9-{{ .Branch }}-{{ checksum "Pipfile.lock" }}
+          paths:
+            - ".venv"
+            - "/usr/local/bin"
+            - "/usr/local/lib/python3.6/site-packages"         
+            #- ".venv/bin/activate && coverage run --source='.' --omit='venv/*' manage.py test boundary users assessments"
+            #- ".venv/bin/activate && coverage report"
+            #- ".venv/bin/activate && coverage html"
+            - mkdir -p /tmp/artifacts
+            - mv htmlcov /tmp/artifacts
+      - store_test_results:
+          path: test-results
+      - store_artifacts:
+          path: test-results
+          destination: tr1
+          
+
+
+
+    
+    
