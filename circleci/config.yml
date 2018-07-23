@@ -30,9 +30,9 @@ jobs:
             - ".venv"
             - "/usr/local/bin"
             - "/usr/local/lib/python3.6/site-packages"         
-            - ".venv/bin/activate && coverage run --source='.' --omit='venv/*' manage.py test boundary users assessments
-            - ".venv/bin/activate && coverage report
-            - ".venv/bin/activate && coverage html
+            - ".venv/bin/activate && coverage run --source='.' --omit='venv/*' manage.py test boundary users assessments"
+            - ".venv/bin/activate && coverage report"
+            - ".venv/bin/activate && coverage html"
           mkdir -p /tmp/artifacts
           mv htmlcov /tmp/artifacts
       - store_test_results:
