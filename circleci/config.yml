@@ -40,4 +40,12 @@ jobs:
       - store_artifacts:
           path: test-results
           destination: tr1
+ workflows:
+ version: 2
+ deploy:
+    jobs:
+      - build:
+          filters:
+            branches:
+              only: master
           
